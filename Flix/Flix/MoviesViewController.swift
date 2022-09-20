@@ -36,6 +36,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     // TODO: Get the array of movies
                     self.movies = dataDictionary["results"] as! [[String:Any]]
                     
+                    print(self.movies)
+                 
                     self.tableView.reloadData()
                  
                     // TODO: Store the movies in a property to use elsewhere

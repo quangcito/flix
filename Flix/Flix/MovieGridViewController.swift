@@ -29,7 +29,7 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
         let width = (view.frame.size.width - layout.minimumInteritemSpacing * 2) / 3
         layout.itemSize = CGSize(width: width, height: width * 3 / 2)
 
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/50468/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -41,8 +41,10 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
 
                     self.movies = dataDictionary["results"] as! [[String:Any]]
                     
-                    self.collectionView.reloadData()
                     print(self.movies)
+                    
+                    self.collectionView.reloadData()
+                    
 
              }
         }
